@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { AppContext, AppContextType } from "../context/AppContext";
 import RecentActivity from "./recentActivity/RecentActivity";
 import ComputerMaintenanceCleaning from "./computerMaintenance/ComputerMaintenanceCleaning";
-
+import "./recentActivity.scss";
 import DashboardPage from "../pages/dashboardPage/DashboardPage";
 import FacilitiesPage from "../pages/facilitiesPage/FacilitiesPage";
+
 const Main = () => {
   const contextValue = useContext<AppContextType>(AppContext);
   return (
@@ -18,10 +19,10 @@ const Main = () => {
             {/* left side column */}
 
             {/* FOR FACILITIES PAGE */}
-            {/* <FacilitiesPage /> */}
+            <FacilitiesPage />
 
             {/* FOR DASHBOARD PAGE */}
-            <DashboardPage />
+            {/* <DashboardPage /> */}
 
             {/* right side column */}
             <div className="col-lg-4">

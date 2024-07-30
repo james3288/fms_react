@@ -103,6 +103,9 @@ const ComputerMaintenanceCleaning = () => {
         });
       </script> */}
       </div>
+      <div className="recent-act-btn">
+        <button className="btn btn-light btn-sm">Load More</button>
+      </div>
     </div>
   );
 };

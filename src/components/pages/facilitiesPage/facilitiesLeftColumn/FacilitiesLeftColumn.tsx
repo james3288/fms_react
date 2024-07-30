@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import coming_soon from "./../../../../assets/img/coming_soon.jpg";
+import { compileString } from "sass";
 
 const FacilitiesLeftColumn = () => {
+  const handleClick = () => {
+    console.log("hello world");
+  };
+
   return (
     <div className="card" style={{ marginBottom: "20px !important" }}>
       <div className="card-body pt-3 myHover" id="item_pic_id">
@@ -21,9 +27,10 @@ const FacilitiesLeftColumn = () => {
               type="button"
               className="btn btn-success"
               style={{ width: "100%" }}
-              data-bs-toggle="modal"
-              data-bs-target="#modal_cro_id_${fac.item_code}"
-              id="createRepairOrderBtn_${fac.item_code}"
+              onClick={() => handleClick()}
+              data-toggle="modal"
+              data-target="#extendSubscriptionModal"
+              data-whatever="@mdo"
             >
               Create Repair Order
             </button>

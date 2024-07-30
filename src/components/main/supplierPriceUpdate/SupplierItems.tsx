@@ -11,7 +11,7 @@ type TSupplierItems = {
 const SupplierItems = (props: TSupplierItems) => {
   return (
     <>
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center"> 
         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
           <a href="" style={{ color: "blue" }}>
             <i className="bi-tags-fill"></i>

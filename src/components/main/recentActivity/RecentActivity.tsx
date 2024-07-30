@@ -97,6 +97,9 @@ const RecentActivity = () => {
           {/* <!-- End activity item--> */}
         </div>
       </div>
+      <div className="recent-act-btn">
+        <button className="btn btn-light btn-sm">Load More</button>
+      </div>
     </div>
   );
 };

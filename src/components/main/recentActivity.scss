@@ -1,0 +1,12 @@
+$font-color: #012970;
+
+.recent-act-btn {
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+
+  button {
+    color: $font-color;
+    font-weight: bold;
+  }
+}

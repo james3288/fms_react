@@ -1,3 +1,4 @@
+import CodeViewIcon from "../../../icons/CodeViewIcon";
 import "./facilitiesRightColumn.scss";
 import Packages from "./packages/Packages";
 
@@ -19,43 +20,45 @@ const FacilitiesRightColumn = () => {
           </div>
           <div className="card-title p-1 fs-6 text-white badge bg-success m-right">
             Served
+            <i className="ri-arrow-right-s-fill"></i>
           </div>
 
-          <div className="card-title p-1 fs-6 text-white badge bg-info m-right">
-            King James Uayan
+          <div className="card-title p-1 fs-6 text-white badge bg-primary m-right">
+            King James Uayan <i className="ri-arrow-right-s-fill"></i>
           </div>
 
           <div className="card-title p-1 fs-6 text-white badge bg-secondary m-right">
-            Repaired
+            Repaired <i className="ri-arrow-right-s-fill"></i>
           </div>
 
           <ul className="list-group">
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              {/* <i className="ri-arrow-right-s-fill text-info"></i> */}
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Date Borrowed: 01/22/24
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Aquisition Date: 01/22/24
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Project: Butuan City
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Location: Agusan del Norte
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span
                 className="card-title"
                 style={{ fontSize: "14px !important" }}
@@ -64,25 +67,25 @@ const FacilitiesRightColumn = () => {
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Serial No: 934929325
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 BS No: 394355
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Maintenance Schedule: 02/24/24
               </span>
             </li>
             <li className="list-group-item p-1">
-              <i className="ri-arrow-right-s-fill text-info"></i>
+              <CodeViewIcon />{" "}
               <span className="card-title" style={{ fontSize: "14px" }}>
                 Last Date Maintenance Schedule: 02/24/24
               </span>

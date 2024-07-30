@@ -1,12 +1,15 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent } from "react";
 import "./inputFields.scss";
 
 type TFields = {
   fields: string;
   placeholder: string;
   htmlFor: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeTextArea?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   id: string;
+  message: string;
+  status?: string;
 };
 
 const InputFields = ({
@@ -15,6 +18,9 @@ const InputFields = ({
   htmlFor,
   onChange,
   id,
+  message,
+  status,
+  onChangeTextArea,
 }: TFields) => {
   if (fields === "textbox") {
     return (
@@ -29,7 +35,18 @@ const InputFields = ({
               onChange={onChange}
             />
             <label htmlFor="floatingInput">{htmlFor}</label>
-            <div className="valid-feedback">Looks good!</div>
+            {message != "" ? (
+              <div className="valid-feedback valid">
+                <div className="icon">
+                  <i className="bi-check-circle-fill"> {status}</i>
+                  {/* <div className="label">check</div> */}
+                </div>
+              </div>
+            ) : (
+              <div className="valid-feedback invalid">
+                {placeholder} must not be empty!
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -42,10 +59,23 @@ const InputFields = ({
             <textarea
               className="form-control"
               placeholder={placeholder}
-              id="floatingTextarea"
+              id={id}
               style={{ height: "100px" }}
+              onChange={onChangeTextArea}
             ></textarea>
             <label htmlFor="floatingTextarea">{htmlFor}</label>
+            {message != "" ? (
+              <div className="valid-feedback valid">
+                <div className="icon">
+                  <i className="bi-check-circle-fill"> {status}</i>
+                  {/* <div className="label">check</div> */}
+                </div>
+              </div>
+            ) : (
+              <div className="valid-feedback invalid">
+                {placeholder} must not be empty!
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -54,7 +84,24 @@ const InputFields = ({
     return (
       <div className="row">
         <div className="col">
-          <input type="date" className="form-control input" />
+          <input
+            type="date"
+            id={id}
+            className="form-control input"
+            onChange={onChange}
+          />
+          {message != "" ? (
+            <div className="valid-feedback valid">
+              <div className="icon">
+                <i className="bi-check-circle-fill"> {status}</i>
+                {/* <div className="label">check</div> */}
+              </div>
+            </div>
+          ) : (
+            <div className="valid-feedback invalid">
+              {placeholder} must not be empty!
+            </div>
+          )}
         </div>
       </div>
     );

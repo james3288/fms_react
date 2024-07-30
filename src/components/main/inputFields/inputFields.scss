@@ -1,3 +1,13 @@
 .input {
   margin: 5px 0;
 }
+
+.valid {
+  display: block;
+  color: green;
+}
+
+.invalid {
+  display: block;
+  color: red !important;
+}

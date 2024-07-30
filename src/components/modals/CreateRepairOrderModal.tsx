@@ -14,20 +14,22 @@ type TRepairOrderModal = {
 
 const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
   // setter
-  const { setItemCode, setItems } = useRepairOrderStore(
-    (state: RepairOrderActions) => ({
+  const { setItemCode, setItems, setProblemEncountered, setRepairDate } =
+    useRepairOrderStore((state: RepairOrderActions) => ({
       setItemCode: state.setItemCode,
       setItems: state.setItems,
-    })
-  );
+      setProblemEncountered: state.setProblemEncountered,
+      setRepairDate: state.setRepairDate,
+    }));
 
   // getter
-  const { itemCode, items } = useRepairOrderStore(
-    (state: RepairOrderState) => ({
+  const { itemCode, items, problemEncountered, repairDate } =
+    useRepairOrderStore((state: RepairOrderState) => ({
       itemCode: state.itemCode,
       items: state.items,
-    })
-  );
+      problemEncountered: state.problemEncountered,
+      repairDate: state.repairDate,
+    }));
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,12 +44,22 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
       setItemCode(value);
     } else if (id === "itemsId") {
       setItems(value);
+    } else if (id === "dateId") {
+      setRepairDate(value);
+    }
+  };
+
+  const handleChangeTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+
+    if (id === "problemEncounteredId") {
+      setProblemEncountered(value);
     }
   };
 
   useEffect(() => {
-    console.log(items);
-  }, [items]);
+    console.log(repairDate);
+  }, [repairDate]);
 
   return (
     <>
@@ -82,6 +94,8 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
                   htmlFor="Item Code"
                   onChange={handleChange}
                   id="itemCodeId"
+                  message={itemCode}
+                  status="good!"
                 />
 
                 <InputFields
@@ -90,6 +104,26 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
                   htmlFor="Items"
                   onChange={handleChange}
                   id="itemsId"
+                  message={items}
+                  status="good!"
+                />
+                <InputFields
+                  fields="textarea"
+                  placeholder="problem encountered"
+                  htmlFor="problem encountered"
+                  id="problemEncounteredId"
+                  message={problemEncountered}
+                  status="good!"
+                  onChangeTextArea={handleChangeTextArea}
+                />
+                <InputFields
+                  fields="date"
+                  placeholder="repair date"
+                  htmlFor="repair date"
+                  id="dateId"
+                  message={repairDate}
+                  status="good!"
+                  onChange={handleChange}
                 />
 
                 <div className="modal-footer">

@@ -10,6 +10,8 @@ type TFields = {
   id: string;
   message: string;
   status?: string;
+  optionList?: { [key: string]: string }[];
+  onChangeOption?: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
 const InputFields = ({
@@ -21,6 +23,8 @@ const InputFields = ({
   message,
   status,
   onChangeTextArea,
+  optionList,
+  onChangeOption,
 }: TFields) => {
   if (fields === "textbox") {
     return (
@@ -127,6 +131,31 @@ const InputFields = ({
           required
         />
         <div className="valid-feedback">Looks good!</div>
+      </div>
+    );
+  } else if (fields === "options") {
+    return (
+      <div className="row">
+        <div className="col">
+          <select
+            className="form-select"
+            id={id}
+            onChange={onChangeOption}
+            required
+          >
+            <option selected disabled value="">
+              {message}
+            </option>
+            {optionList?.map((option) =>
+              // Extract key and value from the option object
+              Object.entries(option).map(([key, value]) => (
+                <option key={key} value={key}>
+                  {value}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
       </div>
     );
   }

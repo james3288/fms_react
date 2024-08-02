@@ -5,6 +5,7 @@ import ComputerMaintenanceCleaning from "./computerMaintenance/ComputerMaintenan
 import "./recentActivity.scss";
 import DashboardPage from "../pages/dashboardPage/DashboardPage";
 import FacilitiesPage from "../pages/facilitiesPage/FacilitiesPage";
+import BorrowerHistoryPage from "../pages/borrowerHistoryPage/BorrowerHistoryPage";
 
 const Main = () => {
   const contextValue = useContext<AppContextType>(AppContext);
@@ -19,8 +20,8 @@ const Main = () => {
             {/* left side column */}
 
             {/* FOR FACILITIES PAGE */}
-            <FacilitiesPage />
-
+            {/* <FacilitiesPage /> */}
+            <BorrowerHistoryPage />
             {/* FOR DASHBOARD PAGE */}
             {/* <DashboardPage /> */}
 

@@ -14,22 +14,42 @@ type TRepairOrderModal = {
 
 const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
   // setter
-  const { setItemCode, setItems, setProblemEncountered, setRepairDate } =
-    useRepairOrderStore((state: RepairOrderActions) => ({
-      setItemCode: state.setItemCode,
-      setItems: state.setItems,
-      setProblemEncountered: state.setProblemEncountered,
-      setRepairDate: state.setRepairDate,
-    }));
+  const {
+    setItemCode,
+    setItems,
+    setProblemEncountered,
+    setRepairDate,
+    setDeliveredBy,
+    setReceivedBy,
+    setContactNo,
+  } = useRepairOrderStore((state: RepairOrderActions) => ({
+    setItemCode: state.setItemCode,
+    setItems: state.setItems,
+    setProblemEncountered: state.setProblemEncountered,
+    setRepairDate: state.setRepairDate,
+    setDeliveredBy: state.setDeliveredBy,
+    setReceivedBy: state.setReceivedBy,
+    setContactNo: state.setContactNo,
+  }));
 
   // getter
-  const { itemCode, items, problemEncountered, repairDate } =
-    useRepairOrderStore((state: RepairOrderState) => ({
-      itemCode: state.itemCode,
-      items: state.items,
-      problemEncountered: state.problemEncountered,
-      repairDate: state.repairDate,
-    }));
+  const {
+    itemCode,
+    items,
+    problemEncountered,
+    repairDate,
+    deliveredBy,
+    receivedBy,
+    contactNo,
+  } = useRepairOrderStore((state: RepairOrderState) => ({
+    itemCode: state.itemCode,
+    items: state.items,
+    problemEncountered: state.problemEncountered,
+    repairDate: state.repairDate,
+    deliveredBy: state.deliveredBy,
+    receivedBy: state.receivedBy,
+    contactNo: state.contactNo,
+  }));
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,6 +66,12 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
       setItems(value);
     } else if (id === "dateId") {
       setRepairDate(value);
+    } else if (id === "deliveredById") {
+      setDeliveredBy(value);
+    } else if (id === "receivedById") {
+      setReceivedBy(value);
+    } else if (id === "contactNoId") {
+      setContactNo(value);
     }
   };
 
@@ -57,9 +83,22 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
     }
   };
 
+  // const handleChangeOption = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   const { id, value } = e.target;
+
+  //   console.log(value);
+  // };
+
   useEffect(() => {
     console.log(repairDate);
   }, [repairDate]);
+
+  const optionList: { [key: string]: string }[] = [
+    { "1": "option 1" },
+    { "2": "option 2" },
+    { "3": "option 3" },
+    { "4": "option 4" },
+  ];
 
   return (
     <>
@@ -125,7 +164,34 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
                   status="good!"
                   onChange={handleChange}
                 />
+                <InputFields
+                  fields="textbox"
+                  placeholder="delivered by"
+                  htmlFor="delivered by"
+                  onChange={handleChange}
+                  id="deliveredById"
+                  message={deliveredBy}
+                  status="good!"
+                />
+                <InputFields
+                  fields="textbox"
+                  placeholder="received by"
+                  htmlFor="received by"
+                  onChange={handleChange}
+                  id="receivedById"
+                  message={receivedBy}
+                  status="good!"
+                />
 
+                {/* <InputFields
+                  fields="textbox"
+                  placeholder="contact no"
+                  htmlFor="contact no"
+                  onChange={handleChange}
+                  id="contactNoId"
+                  message={contactNo}
+                  status="good!"
+                /> */}
                 <div className="modal-footer">
                   <button
                     type="button"

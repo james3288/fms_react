@@ -35,58 +35,51 @@ const FacilitiesRightColumn = () => {
             <li className="list-group-item p-1">
               {/* <i className="ri-arrow-right-s-fill text-info"></i> */}
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Date Borrowed: 01/22/24
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Aquisition Date: 01/22/24
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Project: Butuan City
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Location: Agusan del Norte
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span
-                className="card-title"
-                style={{ fontSize: "14px !important" }}
-              >
-                RS No: 93435
-              </span>
+              <span className="card-title item-fonts">RS No: 93435</span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Serial No: 934929325
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
-                BS No: 394355
-              </span>
+              <span className="card-title item-fonts">BS No: 394355</span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Maintenance Schedule: 02/24/24
               </span>
             </li>
             <li className="list-group-item p-1">
               <CodeViewIcon />{" "}
-              <span className="card-title" style={{ fontSize: "14px" }}>
+              <span className="card-title item-fonts">
                 Last Date Maintenance Schedule: 02/24/24
               </span>
             </li>

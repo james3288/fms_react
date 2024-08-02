@@ -30,6 +30,9 @@ const initialState: RepairOrderState = {
   items: "",
   problemEncountered: "",
   repairDate: "",
+  deliveredBy: "",
+  receivedBy: "",
+  contactNo: "",
 };
 
 export const useRepairOrderStore = create<RepairOrderStore>((set) => ({
@@ -59,6 +62,27 @@ export const useRepairOrderStore = create<RepairOrderStore>((set) => ({
     set(
       produce((state: RepairOrderState) => {
         state.repairDate = data;
+      })
+    );
+  },
+  setDeliveredBy: (data: string) => {
+    set(
+      produce((state: RepairOrderState) => {
+        state.deliveredBy = data;
+      })
+    );
+  },
+  setReceivedBy: (data: string) => {
+    set(
+      produce((state: RepairOrderState) => {
+        state.receivedBy = data;
+      })
+    );
+  },
+  setContactNo: (data: string) => {
+    set(
+      produce((state: RepairOrderState) => {
+        state.contactNo = data;
       })
     );
   },

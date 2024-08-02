@@ -5,9 +5,9 @@ const FacilitiesPage = () => {
   return (
     <>
       <div className="col-lg-8 col-xs-12">
-        <ListOfItems />
+        <ListOfItems page="facilities" />
         <hr className="fac-separator" />
-        <ListOfItems />
+        <ListOfItems page="facilities" />
       </div>
       <CreateRepairOrderModal id="modalDialogScrollable" />
     </>

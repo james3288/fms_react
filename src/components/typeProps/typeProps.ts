@@ -13,6 +13,7 @@ export type itemHistoryProps = {
   itemName: string;
   status: string;
   custodian: string;
+  status_turnover: string;
   date_borrowed: string;
   mto_no: string;
   custodianLocation: string;
@@ -33,4 +34,10 @@ export type borrowerItemsProps = {
 export type acordionProps = {
   id: number;
   title: string;
+  items: facilities;
+};
+
+export type facilities = {
+  item_code_id: number;
+  item_code: string;
 };

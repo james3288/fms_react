@@ -1,100 +1,70 @@
 import Alerts from "../alerts/Alerts";
+import { listOfBorrowerItems } from "../get/getBorrowerHistory";
+import { listOfPackages } from "../get/getPackages";
 import BorrowerHistoryItems from "../pages/facilitiesPage/facilitiesRightColumn/borrowerHistoryItems/BorrowerHistoryItems";
 import Packages from "../pages/facilitiesPage/facilitiesRightColumn/packages/Packages";
-import {
-  acordionProps,
-  itemHistoryProps,
-  packageItemProps,
-} from "../typeProps/typeProps";
+import { acordionProps } from "../typeProps/typeProps";
 
-const Acordion = ({ title, id }: acordionProps) => {
-  const items: packageItemProps = {
-    status: "served",
-    location: "ITD",
-    items: "Computer2",
-  };
-
-  const items2: packageItemProps = {
-    status: "served",
-    location: "ACT",
-    items: "Computer",
-  };
-
-  const listOfItems: packageItemProps[] = [items, items2];
-
-  const itemHistory: itemHistoryProps = {
-    itemCode: "DT-01",
-    itemName: "Computer",
-    status: "served",
-    custodian: "King James",
-    date_borrowed: "2024-01-01",
-    mto_no: "34-53",
-    custodianLocation: "CBR",
-    location: "Cabadbaran",
-    department: "ITD",
-    turnover_to: "Mak2x",
-    date_turnover: "none",
-    submitted_date: "2024-01-01",
-    noted_by: "none",
-  };
-
-  const listOfBorrowerItems: itemHistoryProps[] = [
-    itemHistory,
-    itemHistory,
-    itemHistory,
-  ];
-
+const Acordion = ({ title, id, items }: acordionProps) => {
   return (
     <div className="card">
       <div className="card-body borrower-body">
-        <h5 className="card-title">{title}</h5>
+        <h5 className="card-title">{items.item_code}</h5>
 
         {/* <!-- Default Accordion --> */}
         <div className="accordion" id="accordionExample">
+          {/* packages */}
           <div className="accordion-item">
-            <h2 className="accordion-header" id={`headingOne-${id}`}>
+            <h2
+              className="accordion-header"
+              id={`headingOne-${items.item_code_id}`}
+            >
               <button
                 className="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target={`#collapseOne-${id}`}
+                data-bs-target={`#collapseOne-${items.item_code_id}`}
                 aria-expanded="true"
-                aria-controls={`collapseOne-${id}`}
+                aria-controls={`collapseOne-${items.item_code}`}
               >
                 PACKAGES
               </button>
             </h2>
             <div
-              id={`collapseOne-${id}`}
+              id={`collapseOne-${items.item_code_id}`}
               className="accordion-collapse collapse show"
-              aria-labelledby={`headingOne-${id}`}
+              aria-labelledby={`headingOne-${items.item_code_id}`}
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">
                 <>
                   {/* PACKAGES */}
-                  <Packages packageItems={listOfItems} />
+                  <Packages packageItems={listOfPackages} />
                 </>
               </div>
             </div>
           </div>
+          {/* history */}
           <div className="accordion-item">
-            <h2 className="accordion-header" id={`headingTwo-${id}`}>
+            <h2
+              className="accordion-header"
+              id={`headingTwo-${items.item_code_id}`}
+            >
               <button
                 className="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target={`#collapseTwo-${id}`}
+                data-bs-target={`#collapseTwo-${items.item_code_id}`}
                 aria-expanded="false"
-                aria-controls={`collapseTwo-${id}`}
+                aria-controls={`collapseTwo-${items.item_code_id}`}
               >
                 HISTORY
               </button>
             </h2>
             <div
-              id={`collapseTwo-${id}`}
+              id={`collapseTwo-${items.item_code_id}`}
               className="accordion-collapse collapse"
-              aria-labelledby={`headingTwo-${id}`}
+              aria-labelledby={`headingTwo-${items.item_code_id}`}
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body">

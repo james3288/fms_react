@@ -1,4 +1,7 @@
+import { listOfPackages } from "../../../get/getPackages";
 import CodeViewIcon from "../../../icons/CodeViewIcon";
+import Facilities from "../../../main/facilities/Facilities";
+import { facilities } from "../../../typeProps/typeProps";
 import "./facilitiesRightColumn.scss";
 import Packages from "./packages/Packages";
 
@@ -12,7 +15,7 @@ const FacilitiesRightColumn = () => {
       </h5>
       {/* BODY */}
       <div className="card" style={{ marginBottom: "20px" }} id="top_right_id">
-        <div className="card-header bg-light fs-4">Item Code</div>
+        <div className="card-header bg-light fs-4">item code</div>
         <div className="card-body p-3">
           <div className="card-title p-0">
             <i className="ri-checkbox-multiple-fill"></i>
@@ -87,7 +90,7 @@ const FacilitiesRightColumn = () => {
         </div>
       </div>
       {/* PACKAGES */}
-      <Packages />
+      <Packages packageItems={listOfPackages} />
     </>
   );
 };

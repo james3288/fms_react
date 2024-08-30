@@ -2,13 +2,26 @@ import CodeViewIcon from "../../../../icons/CodeViewIcon";
 import { borrowerItemsProps } from "../../../../typeProps/typeProps";
 
 const BorrowerHistoryItems = ({ itemHistory }: borrowerItemsProps) => {
+  const status_turnover_color = (stat: string) => {
+    console.log(stat);
+    if (stat === "turnovered") {
+      return "bg-success";
+    } else if (stat === "waiting") {
+      return "bg-warning";
+    }
+  };
+
   return (
     <>
       {/* BODY */}
-      <div className="card" style={{ marginBottom: "20px" }} id="top_right_id">
+      <div
+        className="card package-box-border"
+        style={{ marginBottom: "20px" }}
+        id="top_right_id"
+      >
         {/* <div className="card-header bg-light fs-4">DT-101</div> */}
-        {itemHistory?.map((item) => (
-          <div className="card-body p-3">
+        {itemHistory?.map((item, index) => (
+          <div className="card-body p-3" key={index}>
             <div className="card-title p-0">
               <i className="ri-checkbox-multiple-fill"></i>
               {item.itemCode}
@@ -20,6 +33,15 @@ const BorrowerHistoryItems = ({ itemHistory }: borrowerItemsProps) => {
 
             <div className="card-title p-1 fs-6 text-white badge bg-success m-right">
               {item.custodian}
+              <i className="ri-arrow-right-s-fill"></i>
+            </div>
+
+            <div
+              className={`card-title p-1 fs-6 text-white badge ${status_turnover_color(
+                item.status_turnover
+              )} m-right`}
+            >
+              {item.status_turnover}
               <i className="ri-arrow-right-s-fill"></i>
             </div>
 

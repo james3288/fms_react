@@ -37,14 +37,14 @@ const DashboardPage = () => {
           bgColor="#f6f6fe"
           colSize="col-xxl-6 col-md-6"
         />
-        <DashboardCard
+        {/* <DashboardCard
           cardTitle="Item Defective"
           icons={"bi bi-trash"}
           noOfdata={32}
           iconColor="gray"
           bgColor="#f6f6fe"
           colSize="col-xxl-12 col-md-12"
-        />
+        /> */}
 
         <SupplierPriceUpdate />
       </div>

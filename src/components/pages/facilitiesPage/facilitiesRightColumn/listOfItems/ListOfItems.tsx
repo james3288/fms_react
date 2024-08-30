@@ -1,13 +1,16 @@
+import { useEffect } from "react";
 import Acordion from "../../../../acordion/acordion";
+import { facilities } from "../../../../typeProps/typeProps";
 import FacilitiesLeftColumn from "../../facilitiesLeftColumn/FacilitiesLeftColumn";
 import FacilitiesRightColumn from "../FacilitiesRightColumn";
 import FacilitiesRightColumnBorrowerHistory from "../facilitiesRightColumnBorrowerHistory";
 
 type listOfItemsProps = {
+  data: facilities;
   page: string;
 };
 
-const ListOfItems = ({ page }: listOfItemsProps) => {
+const ListOfItems = ({ data, page }: listOfItemsProps) => {
   return (
     <>
       <div className="row">
@@ -22,9 +25,7 @@ const ListOfItems = ({ page }: listOfItemsProps) => {
             <FacilitiesRightColumn />
           ) : page === "borrower-history" ? (
             <>
-              <Acordion title="DT-101" id={1} />
-              <Acordion title="DT-102" id={2} />
-              <Acordion title="DT-103" id={3} />
+              <Acordion title="DT-101" id={1} items={data} />
               {/* <FacilitiesRightColumnBorrowerHistory /> */}
             </>
           ) : (

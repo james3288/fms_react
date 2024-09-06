@@ -19,6 +19,7 @@ const Acordion = ({ title, id, items }: acordionProps) => {
               className="accordion-header"
               id={`headingOne-${items.item_code_id}`}
             >
+              {/* PACKAGES BUTTON */}
               <button
                 className="accordion-button"
                 type="button"
@@ -34,7 +35,7 @@ const Acordion = ({ title, id, items }: acordionProps) => {
               id={`collapseOne-${items.item_code_id}`}
               className="accordion-collapse collapse show"
               aria-labelledby={`headingOne-${items.item_code_id}`}
-              data-bs-parent="#accordionExample"
+              data-bs-parent={`#accordionExample-${items.item_code_id}`}
             >
               <div className="accordion-body">
                 <>
@@ -44,12 +45,15 @@ const Acordion = ({ title, id, items }: acordionProps) => {
               </div>
             </div>
           </div>
+          {/* end packages */}
+
           {/* history */}
           <div className="accordion-item">
             <h2
               className="accordion-header"
               id={`headingTwo-${items.item_code_id}`}
             >
+              {/* History Button */}
               <button
                 className="accordion-button collapsed"
                 type="button"
@@ -65,7 +69,7 @@ const Acordion = ({ title, id, items }: acordionProps) => {
               id={`collapseTwo-${items.item_code_id}`}
               className="accordion-collapse collapse"
               aria-labelledby={`headingTwo-${items.item_code_id}`}
-              data-bs-parent="#accordionExample"
+              data-bs-parent={`#accordionExample-${items.item_code_id}`}
             >
               <div className="accordion-body">
                 {/* TITLE */}
@@ -74,10 +78,12 @@ const Acordion = ({ title, id, items }: acordionProps) => {
                   COMPUTER DESKTOP <span> | BY SPECIFIC</span>
                 </h5>
 
+                {/* BORROWER HISTORY ITEMS */}
                 <BorrowerHistoryItems itemHistory={listOfBorrowerItems} />
               </div>
             </div>
           </div>
+          {/* end history */}
         </div>
         {/* <!-- End Default Accordion Example --> */}
       </div>

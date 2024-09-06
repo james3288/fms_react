@@ -40,4 +40,29 @@ export type acordionProps = {
 export type facilities = {
   item_code_id: number;
   item_code: string;
+  item_name: string;
+};
+
+export type ItemHistoryProps = {
+  item_desc: string;
+  rs_no: string;
+  facilityHistory: facilityHistory;
+};
+
+export type facilityHistory = {
+  custodian_id: number;
+  custodian_name: string;
+  item_name: string;
+  brand: string;
+  item_code: string;
+  current_location: string;
+  serve_status: string;
+  mt_no: string;
+  serial_no: string;
+};
+
+export type distinctFacilityHistory = {
+  item_name: string;
+  brand: string;
+  item_code: string;
 };

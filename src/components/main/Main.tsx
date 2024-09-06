@@ -21,6 +21,7 @@ const Main = () => {
 
             {/* FOR FACILITIES PAGE */}
             {/* <FacilitiesPage /> */}
+
             <BorrowerHistoryPage />
             {/* FOR DASHBOARD PAGE */}
             {/* <DashboardPage /> */}

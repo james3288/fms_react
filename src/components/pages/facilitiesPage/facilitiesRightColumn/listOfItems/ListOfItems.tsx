@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import Acordion from "../../../../acordion/acordion";
 import { facilities } from "../../../../typeProps/typeProps";
 import FacilitiesLeftColumn from "../../facilitiesLeftColumn/FacilitiesLeftColumn";
 import FacilitiesRightColumn from "../FacilitiesRightColumn";
 import FacilitiesRightColumnBorrowerHistory from "../facilitiesRightColumnBorrowerHistory";
-
+import folder from "../../../../../assets/img/folder.png";
 type listOfItemsProps = {
   data: facilities;
   page: string;
@@ -25,8 +23,16 @@ const ListOfItems = ({ data, page }: listOfItemsProps) => {
             <FacilitiesRightColumn />
           ) : page === "borrower-history" ? (
             <>
-              <Acordion title="DT-101" id={1} items={data} />
-              {/* <FacilitiesRightColumnBorrowerHistory /> */}
+              <div className="card-title f-title">
+                <a href="">
+                  <img src={folder} width={32} height={32} />
+                </a>
+                <h3>{data.item_code}</h3>
+              </div>
+              <FacilitiesRightColumnBorrowerHistory
+                item_code={data.item_code}
+                item_name={data.item_name}
+              />
             </>
           ) : (
             ""

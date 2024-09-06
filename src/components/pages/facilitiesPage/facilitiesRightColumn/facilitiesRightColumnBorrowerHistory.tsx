@@ -1,22 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
 import Alerts from "../../../alerts/Alerts";
-import BorrowerHistoryItems from "./borrowerHistoryItems/BorrowerHistoryItems";
-import "./facilitiesRightColumn.scss";
-import Packages from "./packages/Packages";
+import {
+  distinctFacilityHistory,
+  facilityHistory,
+} from "../../../typeProps/typeProps";
+import BorrowerHistoryItems2 from "./borrowerHistoryItems/BorrowerHistoryItems2";
+import useDistinctFacilityHistory from "../../../customHooks/useDistinctFacilityHistory";
 
-const FacilitiesRightColumnBorrowerHistory = () => {
+type facHistoryProps = {
+  item_code: string;
+  item_name: string;
+};
+
+const FacilitiesRightColumnBorrowerHistory = ({
+  item_code,
+}: facHistoryProps) => {
+  const { distinctFacilityHistory, status, error } =
+    useDistinctFacilityHistory(item_code);
+
   return (
     <>
-      {/* PACKAGES */}
-      <Packages />
-
-      {/* TITLE */}
-
-      <h5 className="card-title">
-        BORROWER HISTORY <span> | BY SPECIFIC</span>
-      </h5>
-      <Alerts option="success" message="22 has been found" />
-      <BorrowerHistoryItems />
-      <BorrowerHistoryItems />
+      {distinctFacilityHistory?.distinctFH?.map(
+        (item: distinctFacilityHistory) => (
+          <>
+            <BorrowerHistoryItems2
+              brand={item.brand}
+              item_name={item.item_name}
+              item_code={item_code}
+              key={item.item_code}
+            />
+          </>
+        )
+      )}
     </>
   );
 };

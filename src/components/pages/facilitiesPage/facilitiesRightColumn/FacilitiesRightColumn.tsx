@@ -1,7 +1,7 @@
 import { listOfPackages } from "../../../get/getPackages";
 import CodeViewIcon from "../../../icons/CodeViewIcon";
-import Facilities from "../../../main/facilities/Facilities";
-import { facilities } from "../../../typeProps/typeProps";
+// import Facilities from "../../../main/facilities/Facilities";
+// import { facilities } from "../../../typeProps/typeProps";
 import "./facilitiesRightColumn.scss";
 import Packages from "./packages/Packages";
 

@@ -1,4 +1,6 @@
 import instance from "../../others/axiosInstance";
+import getter from "../getter/getter";
+import Facilities from "../main/facilities/Facilities";
 import { facilities } from "../typeProps/typeProps";
 
 const LIMIT = 10;
@@ -11,11 +13,15 @@ type myProps = {
 
 export const getListOfFacilities = async ({
   pageParam,
+  search,
 }: {
   pageParam: number;
+  search: string;
 }): Promise<myProps | undefined> => {
   try {
-    const response = await instance.get(`/sqlApi/get-listoffacilities/`);
+    const response = await instance.get(
+      `/sqlApi/get-listoffacilities/?search=${search || ""}`
+    );
 
     // Assuming response.data contains an object with the facilities array
     const listOfFacilities: facilities[] = response.data.facilities || [];

@@ -11,7 +11,7 @@ type listOfItemsProps = {
 const ListOfItems = ({ data, page }: listOfItemsProps) => {
   return (
     <>
-      <div className="row">
+      <div className="row" key={data.item_code_id}>
         {/*  LEFT COLUMN */}
         <div className="col-lg-5 col-xs-12">
           <FacilitiesLeftColumn page={page} />

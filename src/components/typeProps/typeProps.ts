@@ -49,6 +49,8 @@ export type ItemHistoryProps = {
   facilityHistory: facilityHistory;
 };
 
+
+// FACILITY HISTORY
 export type facilityHistory = {
   custodian_id: number;
   custodian_name: string;
@@ -66,3 +68,4 @@ export type distinctFacilityHistory = {
   brand: string;
   item_code: string;
 };
+// END FACILITY HISTORY

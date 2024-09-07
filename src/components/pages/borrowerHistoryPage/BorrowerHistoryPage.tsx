@@ -6,6 +6,8 @@ import { useInView } from "react-intersection-observer";
 import { facilities } from "../../typeProps/typeProps";
 import getter from "../../getter/getter";
 import FacilityHistoryLoading from "../../loadingEffect/facilityHistoryLoading";
+import Alerts from "../../alerts/Alerts";
+import { Alert } from "@mui/material";
 
 const BorrowerHistoryPage = () => {
   const search = getter().cSearch;
@@ -28,16 +30,25 @@ const BorrowerHistoryPage = () => {
 
   return (
     <div className="col-lg-8 col-xs-12">
+      {data?.pages?.length === undefined ? (
+        <FacilityHistoryLoading />
+      ) : (
+        <Alerts
+          message={`${data?.pages.length} pages has been load!`}
+          option="success"
+        />
+      )}
+
       {data?.pages.map((page) => {
         return (
           <>
             <div key={page?.currentPage}>
-              {page?.data.map((item) => {
+              {page?.data.map((item, index) => {
                 return (
                   <ListOfItems
                     data={item}
                     page="borrower-history"
-                    key={item.item_code_id}
+                    key={index}
                   />
                 );
               })}
@@ -45,7 +56,6 @@ const BorrowerHistoryPage = () => {
           </>
         );
       })}
-
       {/* <ListOfItems
     data={data2}
     page="borrower-history"
@@ -54,6 +64,7 @@ const BorrowerHistoryPage = () => {
       <div ref={ref}></div>
     </div>
   );
+
   // return status === "pending" ? (
   //   <div>
   //     <FacilityHistoryLoading />

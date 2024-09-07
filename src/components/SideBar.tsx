@@ -1,16 +1,17 @@
 // import ChevroDown from "./icons/chevroDown";
 
-import { useContext } from "react";
-import { AppContext, AppContextType } from "./context/AppContext";
+// import { useContext } from "react";
+// import { AppContext, AppContextType } from "./context/AppContext";
 import "./sideBar.scss";
+import getter from "./getter/getter";
 
 const SideBar = () => {
-  const contextValue = useContext<AppContextType>(AppContext);
-
+  // const contextValue = useContext<AppContextType>(AppContext);
+  const toggleSideBar = getter().cToggleSideBar;
   return (
     <aside
       id="sidebar"
-      className={contextValue.toggle ? "sidebar toggle-sidebar" : "sidebar"}
+      className={toggleSideBar ? "sidebar toggle-sidebar" : "sidebar"}
     >
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">

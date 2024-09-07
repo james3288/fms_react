@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
-import { useFacilityHistoryStore } from "../../store/useFacilityHistory";
 import setter from "../../setter/setter";
 import getter from "../../getter/getter";
 
 const SearchBar = () => {
-  const setSearch = setter();
-  // const search = getter();
+  const setSearch = setter().cSetSearch;
+  const toggleSearchBar = getter().cToggleSearchBar;
 
   const handleOnSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch.cSetSearch(e.currentTarget.value);
-
-    // setter(e.currentTarget.value);
+    setSearch(e.currentTarget.value);
   };
 
-  // useEffect(() => {
-  //   console.log(search.cSearch);
-  // }, [search]);
-
   return (
-    <div className="search-bar" id="search-bar-id">
+    <div
+      className={`search-bar ${toggleSearchBar && "search-bar-show"}`}
+      id="search-bar-id"
+    >
       <form
         className="search-form d-flex align-items-center"
         method="POST"

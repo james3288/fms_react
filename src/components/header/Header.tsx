@@ -3,12 +3,17 @@ import adfilLogo from "./../../assets/img/adfil-dragon-raw.png";
 import Navigation from "./navigation/Navigation";
 import SearchBar from "./searchbar/SearchBar";
 import { AppContext, AppContextType } from "../context/AppContext";
+import getter from "../getter/getter";
+import setter from "../setter/setter";
 
 const Header = () => {
-  const contextValue = useContext<AppContextType>(AppContext);
+  // const contextValue = useContext<AppContextType>(AppContext);
+  const toggleSideBar = getter().cToggleSideBar;
+  const setToggleSideBar = setter().cSetToggleSideBar;
 
   const handleToggleButton = () => {
-    contextValue.setToggle((prev) => !prev);
+    // contextValue.setToggle((prev) => !prev);
+    setToggleSideBar(!toggleSideBar);
   };
 
   return (

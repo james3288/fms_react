@@ -48,6 +48,11 @@ const getStatusColor = (status: string) => {
     : "";
 };
 
+const handleCreateRepairOrder = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  console.log("hello");
+};
+
 const BorrowerHistoryItems2 = ({
   item_code,
   item_name,
@@ -123,6 +128,17 @@ const BorrowerHistoryItems2 = ({
                       {recorrectStatusName(item.serve_status)}
                     </span>
                   </a>
+                  <br />
+                  <br />
+                  {recorrectStatusName(item.serve_status) != "turnover" && (
+                    <a
+                      href=""
+                      className="fw-bold text-dark"
+                      onClick={handleCreateRepairOrder}
+                    >
+                      <span className="cro-color">Create Repair Order</span>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

@@ -1,6 +1,7 @@
 import { useFacilityHistoryStore } from "../store/useFacilityHistory";
 
 import React from "react";
+import { useHeaderStore } from "../store/useHeaderStore";
 
 const getter = () => {
   // getter
@@ -8,7 +9,15 @@ const getter = () => {
     cSearch: state.search,
   }));
 
-  return { cSearch };
+  const { cToggleSearchBar } = useHeaderStore((state) => ({
+    cToggleSearchBar: state.toggleSearchBar,
+  }));
+
+  const { cToggleSideBar } = useHeaderStore((state) => ({
+    cToggleSideBar: state.toggleSideBar,
+  }));
+
+  return { cSearch, cToggleSearchBar, cToggleSideBar };
 };
 
 export default getter;

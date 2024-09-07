@@ -6,15 +6,14 @@ import "./recentActivity.scss";
 import DashboardPage from "../pages/dashboardPage/DashboardPage";
 import FacilitiesPage from "../pages/facilitiesPage/FacilitiesPage";
 import BorrowerHistoryPage from "../pages/borrowerHistoryPage/BorrowerHistoryPage";
+import getter from "../getter/getter";
 
 const Main = () => {
-  const contextValue = useContext<AppContextType>(AppContext);
+  // const contextValue = useContext<AppContextType>(AppContext);
+  const toggleSideBar = getter().cToggleSideBar;
   return (
     <>
-      <main
-        id="main"
-        className={contextValue.toggle ? "main toggle-main" : "main"}
-      >
+      <main id="main" className={toggleSideBar ? "main toggle-main" : "main"}>
         <section className="section dashboard">
           <div className="row">
             {/* left side column */}

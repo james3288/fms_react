@@ -9,6 +9,7 @@ type myProps = {
   data: facilities[];
   currentPage: number;
   nextPage: number | null;
+  noOfFacilities: number | 0;
 };
 
 export const getListOfFacilities = async ({
@@ -42,6 +43,7 @@ export const getListOfFacilities = async ({
         pageParam + LIMIT < newListOfFacilities.length
           ? pageParam + LIMIT
           : null,
+      noOfFacilities: newListOfFacilities.length,
     };
   } catch (error) {
     console.error("Error fetching facilities:", error);

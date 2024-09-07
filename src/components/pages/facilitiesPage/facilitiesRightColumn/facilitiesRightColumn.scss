@@ -70,11 +70,27 @@ $loading-box: rgb(221, 217, 217);
 
 .ts-color {
   color: rgb(83, 112, 23);
-  font-weight: normal;
+  font-weight: bold;
   font-style: italic;
-  font-size: 11px;
+  font-size: 12px;
   padding: 3px 5px;
   border-radius: 5px;
+}
+
+.cro-color {
+  color: rgb(83, 112, 23);
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
+  background-color: #d2e7dd;
+  padding: 3px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(169, 195, 119);
+}
+
+.cro-color:hover {
+  background-color: rgb(196, 225, 138);
+  color: rgb(48, 72, 0);
 }
 
 .turnover-circle-color {

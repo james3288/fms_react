@@ -49,9 +49,9 @@ export type ItemHistoryProps = {
   facilityHistory: facilityHistory;
 };
 
-
-// FACILITY HISTORY
+// FACILITY HISTORY TYPE
 export type facilityHistory = {
+  date_borrowed_turnover: string;
   custodian_id: number;
   custodian_name: string;
   item_name: string;
@@ -59,8 +59,15 @@ export type facilityHistory = {
   item_code: string;
   current_location: string;
   serve_status: string;
+  status_served_id: number;
   mt_no: string;
   serial_no: string;
+  rs_no: string;
+  status_item: string;
+  item_name_desc_id: number;
+  transfer_to: string;
+  type_of_purchasing: string;
+  rr_price: number;
 };
 
 export type distinctFacilityHistory = {
@@ -68,4 +75,17 @@ export type distinctFacilityHistory = {
   brand: string;
   item_code: string;
 };
-// END FACILITY HISTORY
+// END FACILITY HISTORY TYPE
+
+// UPLOADIMAGEFORITEMCODE TYPE
+export type uploadImageForItemCodeType = {
+  itemCode: string;
+  image: File;
+};
+// END UPLOADIMAGEFORITEMCODE TYPE
+
+// CREATE REPAIR ORDER PARAMETER TYPE
+export type createRepairOrderModalProps = {
+  cItemCode?: string;
+};
+// END CREATE REPAIR ORDER PARAMETER TYPE

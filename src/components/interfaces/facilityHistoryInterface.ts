@@ -1,4 +1,7 @@
-import { facilityHistory } from "../typeProps/typeProps";
+import {
+  facilityHistory,
+  uploadImageForItemCodeType,
+} from "../typeProps/typeProps";
 
 export interface facilityHistoryState {
   itemCode: string;
@@ -9,4 +12,18 @@ export interface facilityHistoryState {
 export interface facilityHistoryAction {
   setSearch: (param: string) => void;
   setFacilityHistory: (param: facilityHistory[]) => void;
+}
+
+export interface uploadItemCodeImageState {
+  itemCode: string;
+  itemCode2: string;
+  listOfItemCodeImages: uploadImageForItemCodeType[];
+}
+
+export interface uploadItemCodeImageAction {
+  setItemCode: (param: string) => void;
+  setItemCode2: (param: string) => void;
+  setListOfItemCodeImages: (
+    param: uploadImageForItemCodeType[] | undefined
+  ) => void;
 }

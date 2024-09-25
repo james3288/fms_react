@@ -1,20 +1,10 @@
-import { useContext } from "react";
 import adfilLogo from "./../../assets/img/adfil-dragon-raw.png";
 import Navigation from "./navigation/Navigation";
 import SearchBar from "./searchbar/SearchBar";
-import { AppContext, AppContextType } from "../context/AppContext";
-import getter from "../getter/getter";
-import setter from "../setter/setter";
+import useToggleSideBar from "../customHooks/useToggleSideBar";
 
 const Header = () => {
-  // const contextValue = useContext<AppContextType>(AppContext);
-  const toggleSideBar = getter().cToggleSideBar;
-  const setToggleSideBar = setter().cSetToggleSideBar;
-
-  const handleToggleButton = () => {
-    // contextValue.setToggle((prev) => !prev);
-    setToggleSideBar(!toggleSideBar);
-  };
+  const handleToggleButton = useToggleSideBar();
 
   return (
     <header id="header" className="header fixed-top d-flex align-items-center">

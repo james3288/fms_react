@@ -8,11 +8,11 @@ import {
   RepairOrderState,
 } from "../interfaces/repairOrderInterface";
 
-type TRepairOrderModal = {
+type repairOrderModalProps = {
   id: string;
 };
 
-const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
+const CreateRepairOrderModal = ({ id }: repairOrderModalProps) => {
   // setter
   const {
     setItemCode,
@@ -50,6 +50,10 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
     receivedBy: state.receivedBy,
     contactNo: state.contactNo,
   }));
+
+  useEffect(() => {
+    console.log(id);
+  }, [id]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -104,7 +108,7 @@ const CreateRepairOrderModal = ({ id }: TRepairOrderModal) => {
     <>
       <div
         className="modal fade"
-        id="extendSubscriptionModal"
+        id={id}
         role="dialog"
         aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true"

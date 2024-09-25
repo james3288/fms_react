@@ -1,16 +1,29 @@
-import { useContext } from "react";
-import { AppContext, AppContextType } from "../context/AppContext";
+import { useEffect } from "react";
 import RecentActivity from "./recentActivity/RecentActivity";
 import ComputerMaintenanceCleaning from "./computerMaintenance/ComputerMaintenanceCleaning";
 import "./recentActivity.scss";
-import DashboardPage from "../pages/dashboardPage/DashboardPage";
-import FacilitiesPage from "../pages/facilitiesPage/FacilitiesPage";
 import BorrowerHistoryPage from "../pages/borrowerHistoryPage/BorrowerHistoryPage";
 import getter from "../getter/getter";
+import setter from "../setter/setter";
+import useUploadedImagesForItemCode from "../customHooks/useItemCodeImages";
+import DashboardPage from "../pages/dashboardPage/DashboardPage";
+import SupplierPriceUpdate from "./supplierPriceUpdate/SupplierPriceUpdate";
 
 const Main = () => {
   // const contextValue = useContext<AppContextType>(AppContext);
   const toggleSideBar = getter().cToggleSideBar;
+
+  // setter
+  const setListOfItemCodeImages = setter().cSetListOfItemCodeImages;
+  const {
+    uploadedImagesFormItemCode: uif,
+    // status: status2,
+    // error: error2,
+  } = useUploadedImagesForItemCode();
+
+  useEffect(() => {
+    setListOfItemCodeImages(uif?.listOfUploadedImages);
+  }, [uif]); // Dependency array makes sure this runs only when 'uif' changes
   return (
     <>
       <main id="main" className={toggleSideBar ? "main toggle-main" : "main"}>
@@ -21,14 +34,17 @@ const Main = () => {
             {/* FOR FACILITIES PAGE */}
             {/* <FacilitiesPage /> */}
 
-            <BorrowerHistoryPage />
+            {/* FOR BORROWER HISTORY PAGE */}
+            {/* <BorrowerHistoryPage /> */}
+
             {/* FOR DASHBOARD PAGE */}
-            {/* <DashboardPage /> */}
+            <DashboardPage />
 
             {/* right side column */}
             <div className="col-lg-4">
-              <RecentActivity />
-              <ComputerMaintenanceCleaning />
+              {/* <RecentActivity /> */}
+              {/* <ComputerMaintenanceCleaning /> */}
+              <SupplierPriceUpdate />
             </div>
           </div>
         </section>

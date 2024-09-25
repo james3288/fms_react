@@ -1,3 +1,5 @@
+import comming_soon from "./../../../assets/img/coming_soon.jpg";
+
 type TSupplierItems = {
   items: string;
   price: number;
@@ -11,10 +13,11 @@ type TSupplierItems = {
 const SupplierItems = (props: TSupplierItems) => {
   return (
     <>
-      <div className="d-flex align-items-center"> 
+      <div className="d-flex align-items-center">
         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
           <a href="" style={{ color: "blue" }}>
-            <i className="bi-tags-fill"></i>
+            {/* <i className="bi-tags-fill"></i> */}
+            <img className="item-img" src={comming_soon} alt="" />
           </a>
         </div>
         <div className="supp">

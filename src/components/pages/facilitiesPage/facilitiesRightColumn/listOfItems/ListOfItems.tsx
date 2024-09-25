@@ -3,18 +3,31 @@ import FacilitiesLeftColumn from "../../facilitiesLeftColumn/FacilitiesLeftColum
 import FacilitiesRightColumn from "../FacilitiesRightColumn";
 import FacilitiesRightColumnBorrowerHistory from "../facilitiesRightColumnBorrowerHistory";
 import folder from "../../../../../assets/img/folder.png";
+import getter from "../../../../getter/getter";
+
 type listOfItemsProps = {
   data: facilities;
   page: string;
 };
 
 const ListOfItems = ({ data, page }: listOfItemsProps) => {
+  // getter
+  const getListOfItemCodeImages = getter().cListOfItemCodeImages;
+
+  const itemImage = getListOfItemCodeImages
+    .filter((x) => x.itemCode === data.item_code)
+    .map((x) => x.image);
+
   return (
     <>
       <div className="row" key={data.item_code_id}>
         {/*  LEFT COLUMN */}
         <div className="col-lg-5 col-xs-12">
-          <FacilitiesLeftColumn page={page} />
+          <FacilitiesLeftColumn
+            page={page}
+            item_code={data.item_code}
+            image={itemImage}
+          />
         </div>
 
         {/* RIGHT COLUMN */}
@@ -32,6 +45,7 @@ const ListOfItems = ({ data, page }: listOfItemsProps) => {
               <FacilitiesRightColumnBorrowerHistory
                 item_code={data.item_code}
                 item_name={data.item_name}
+                key={data.item_code}
               />
             </>
           ) : (

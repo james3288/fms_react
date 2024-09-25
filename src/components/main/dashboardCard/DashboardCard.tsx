@@ -3,7 +3,7 @@ type TDashboardTypes = {
   icons: any;
   iconColor: string;
   bgColor: string;
-  noOfdata: number;
+  noOfdata: number | 0;
   colSize: string;
 };
 

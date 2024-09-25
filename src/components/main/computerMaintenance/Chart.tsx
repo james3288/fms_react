@@ -7,18 +7,19 @@ const Chart: React.FC = () => {
     tooltip: {},
     dataset: {
       source: [
-        ["Department", "CLEANED", "UNCLEANED"],
-        ["ITD", 43.3, 50],
-        ["EMD", 83.1, 73.4],
-        ["ACCT", 86.4, 65.2],
-        ["SAD", 72.4, 53.9],
+        ["Department", "CLEANED", "UNCLEANED", "TOTAL"],
+        ["ITD", 5, 2, 7],
+        ["EMD", 4, 6, 10],
+        ["PCM", 4, 6, 10],
+        ["ACC", 8, 6, 14],
+        ["ENGD", 16, 16, 16],
       ],
     },
     xAxis: { type: "category" },
     yAxis: {},
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.
-    series: [{ type: "bar" }, { type: "bar" }],
+    series: [{ type: "bar" }, { type: "bar" }, { type: "bar" }],
   };
 
   return <ReactECharts option={option} />;

@@ -4,6 +4,7 @@ import {
   RepairOrderActions,
   RepairOrderState,
 } from "../interfaces/repairOrderInterface";
+import { ManPowerInterface } from "../interfaces/repairOrderInterfaces";
 
 // Combine state and actions into a single store type
 type RepairOrderStore = RepairOrderState & RepairOrderActions;

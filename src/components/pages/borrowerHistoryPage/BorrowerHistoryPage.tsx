@@ -3,14 +3,16 @@ import ListOfItems from "../facilitiesPage/facilitiesRightColumn/listOfItems/Lis
 import { getListOfFacilities } from "../../get/getListOfFacilities";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import { facilities } from "../../typeProps/typeProps";
 import getter from "../../getter/getter";
 import FacilityHistoryLoading from "../../loadingEffect/facilityHistoryLoading";
 import Alerts from "../../alerts/Alerts";
-import { Alert } from "@mui/material";
 
 const BorrowerHistoryPage = () => {
+  // getter
   const search = getter().cSearch;
+
+  // // setter
+  // const setListOfItemCodeImages = setter().cSetListOfItemCodeImages;
 
   const { data, status, error, fetchNextPage } = useInfiniteQuery({
     queryKey: ["forFacilities", search],
@@ -18,9 +20,6 @@ const BorrowerHistoryPage = () => {
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage?.nextPage,
   });
-
-  // const data2: facilities = [];
-  // data2.item_code = "DC-40";
 
   const { ref, inView } = useInView();
 
@@ -30,14 +29,15 @@ const BorrowerHistoryPage = () => {
 
   return (
     <div className="col-lg-8 col-xs-12">
-      {data?.pages?.length === undefined ? (
+      {data?.pages?.length === undefined && <FacilityHistoryLoading />}
+      {/* {data?.pages?.length === undefined ? (
         <FacilityHistoryLoading />
       ) : (
         <Alerts
           message={`${data?.pages.length} pages has been load!`}
           option="success"
         />
-      )}
+      )} */}
 
       {data?.pages.map((page) => {
         return (
@@ -56,47 +56,10 @@ const BorrowerHistoryPage = () => {
           </>
         );
       })}
-      {/* <ListOfItems
-    data={data2}
-    page="borrower-history"
-    key={data2.item_code_id}
-  /> */}
+
       <div ref={ref}></div>
     </div>
   );
-
-  // return status === "pending" ? (
-  //   <div>
-  //     <FacilityHistoryLoading />
-  //   </div>
-  // ) : status === "error" ? (
-  //   <div>{error.message}</div>
-  // ) : (
-  //   <div className="col-lg-8 col-xs-12">
-  //     {data?.pages.map((page) => {
-  //       return (
-  //         <div key={page?.currentPage}>
-  //           {page?.data.map((item) => {
-  //             return (
-  //               <ListOfItems
-  //                 data={item}
-  //                 page="borrower-history"
-  //                 key={item.item_code_id}
-  //               />
-  //             );
-  //           })}
-  //         </div>
-  //       );
-  //     })}
-
-  //     {/* <ListOfItems
-  //       data={data2}
-  //       page="borrower-history"
-  //       key={data2.item_code_id}
-  //     /> */}
-  //     <div ref={ref}></div>
-  //   </div>
-  // );
 };
 
 export default BorrowerHistoryPage;

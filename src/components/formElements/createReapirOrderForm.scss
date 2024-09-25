@@ -1,0 +1,32 @@
+.assessment-span {
+  font-size: 14px !important;
+}
+
+.total-cost-repair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manpower-needed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plus {
+  color: #2b7c92;
+  font-size: 24px;
+}
+
+.minus {
+  color: #d4836d;
+  font-size: 18px;
+}
+.minus:hover {
+  color: red;
+}
+
+.plus:hover {
+  color: green;
+}

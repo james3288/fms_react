@@ -1,7 +1,7 @@
 import { useFacilityHistoryStore } from "../store/useFacilityHistory";
 
-import React from "react";
 import { useHeaderStore } from "../store/useHeaderStore";
+import { useUploadItemCodeImageStore } from "../store/useUploadItemCodeImageStore";
 
 const getter = () => {
   // getter
@@ -17,7 +17,26 @@ const getter = () => {
     cToggleSideBar: state.toggleSideBar,
   }));
 
-  return { cSearch, cToggleSearchBar, cToggleSideBar };
+  const { cItemCode } = useUploadItemCodeImageStore((state) => ({
+    cItemCode: state.itemCode,
+  }));
+
+  const { cListOfItemCodeImages } = useUploadItemCodeImageStore((state) => ({
+    cListOfItemCodeImages: state.listOfItemCodeImages,
+  }));
+
+  const { cItemCode2 } = useUploadItemCodeImageStore((state) => ({
+    cItemCode2: state.itemCode2,
+  }));
+
+  return {
+    cSearch,
+    cToggleSearchBar,
+    cToggleSideBar,
+    cItemCode,
+    cListOfItemCodeImages,
+    cItemCode2,
+  };
 };
 
 export default getter;

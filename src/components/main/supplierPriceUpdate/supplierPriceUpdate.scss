@@ -3,3 +3,10 @@
     font-size: 1.1rem !important;
   }
 }
+
+.item-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  object-fit: contain;
+}

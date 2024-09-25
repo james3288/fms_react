@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import setter from "../../setter/setter";
 import getter from "../../getter/getter";
 
@@ -21,6 +20,7 @@ const SearchBar = () => {
         action="#"
       >
         <input
+          id="searchBar-id"
           type="text"
           name="query"
           placeholder="Search"

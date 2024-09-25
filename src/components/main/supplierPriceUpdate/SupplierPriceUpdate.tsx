@@ -1,7 +1,14 @@
+import useCountListOfFacilities from "../../customHooks/useCountListOfFacilities";
+import { facilityHistory } from "../../typeProps/typeProps";
 import SupplierItems from "./SupplierItems";
 import "./supplierPriceUpdate.scss";
 
 const SupplierPriceUpdate = () => {
+  const { countListOfFc, status } = useCountListOfFacilities(6);
+
+  const newListOfFc: facilityHistory[] =
+    countListOfFc === undefined ? [] : countListOfFc.data.slice(0, 5);
+
   return (
     <div className="col-12">
       <div className="card info-card sales-card">
@@ -22,45 +29,28 @@ const SupplierPriceUpdate = () => {
           </h5>
 
           {/* Supplier Items */}
-          <SupplierItems
-            items="Laptop - Acer"
-            price={42222}
-            rs_no="423923"
-            supplier="Columbia Computer Center Inc"
-            type_of_purchasing="Purchase Order"
-            item_code="DT-23232"
-            date="01-12-23"
-          />
-          <hr />
-          <SupplierItems
-            items="Laptop - Acer"
-            price={42222}
-            rs_no="423923"
-            supplier="Columbia Computer Center Inc"
-            type_of_purchasing="Purchase Order"
-            item_code="DT-23232"
-            date="01-12-23"
-          />
-          <hr />
-          <SupplierItems
-            items="Laptop - Acer"
-            price={42222}
-            rs_no="423923"
-            supplier="Columbia Computer Center Inc"
-            type_of_purchasing="Purchase Order"
-            item_code="DT-23232"
-            date="01-12-23"
-          />
-          <hr />
-          <SupplierItems
-            items="Laptop - Acer"
-            price={42222}
-            rs_no="423923"
-            supplier="Columbia Computer Center Inc"
-            type_of_purchasing="Purchase Order"
-            item_code="DT-23232"
-            date="01-12-23"
-          />
+          {status === "pending" ? (
+            <div className="spinner-grow" role="status">
+              <span className="sr-only"></span>
+            </div>
+          ) : (
+            newListOfFc?.map((x, index) => (
+              <>
+                <div key={`supp_${index}`}>
+                  <SupplierItems
+                    items={`${x.item_name} - ${x.brand}`}
+                    price={x.rr_price}
+                    rs_no={x.rs_no}
+                    supplier="Columbia Computer Center Inc"
+                    type_of_purchasing={"Purchase Order"}
+                    item_code={x.item_code}
+                    date="01-12-23"
+                  />
+                  {index < 4 && <hr />}
+                </div>
+              </>
+            ))
+          )}
         </div>
       </div>
     </div>

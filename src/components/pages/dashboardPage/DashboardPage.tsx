@@ -1,42 +1,64 @@
+import useCountListOfFacilities from "../../customHooks/useCountListOfFacilities";
+import ComputerMaintenanceCleaning from "../../main/computerMaintenance/ComputerMaintenanceCleaning";
 import DashboardCard from "../../main/dashboardCard/DashboardCard";
-import SupplierPriceUpdate from "../../main/supplierPriceUpdate/SupplierPriceUpdate";
 
 const DashboardPage = () => {
+  const { borrowed, vacant, disposed, forDisposal, lostItems, lowSpecs } =
+    useCountListOfFacilities(5);
+
   return (
     <div className="col-lg-8">
       <div className="row" id="rowID">
         <DashboardCard
-          cardTitle="Borrowed"
+          cardTitle="Served"
           icons={"bi bi-hand-index"}
-          noOfdata={2}
+          noOfdata={borrowed}
           iconColor="blue"
           bgColor="#f6f6fe"
           colSize="col-xxl-6 col-md-6"
         />
         <DashboardCard
-          cardTitle="Under Repair"
-          icons={"bi bi-tools"}
-          noOfdata={32}
-          iconColor="green"
-          bgColor="#e0f8e9"
+          cardTitle="Disposed"
+          icons={"bi bi-trash2"}
+          noOfdata={disposed}
+          iconColor="#2B3E4E"
+          bgColor="#81BAEA"
           colSize="col-xxl-6 col-md-6"
         />
         <DashboardCard
           cardTitle="Item Vacant"
           icons={"bi bi-bag-plus-fill"}
-          noOfdata={32}
+          noOfdata={vacant}
           iconColor="darkorange"
           bgColor="#ffecdf"
           colSize="col-xxl-6 col-md-6"
         />
         <DashboardCard
-          cardTitle="Item Defective"
+          cardTitle="For Disposal"
           icons={"bi bi-trash"}
-          noOfdata={32}
-          iconColor="gray"
-          bgColor="#f6f6fe"
+          noOfdata={forDisposal}
+          iconColor="#D83049"
+          bgColor="#F4CAD0"
           colSize="col-xxl-6 col-md-6"
         />
+        <DashboardCard
+          cardTitle="Low Specs"
+          icons={"bi bi-brightness-low-fill"}
+          noOfdata={lowSpecs}
+          iconColor="orange"
+          bgColor="#FEF2D8"
+          colSize="col-xxl-6 col-md-6"
+        />
+        <DashboardCard
+          cardTitle="Lost Items"
+          icons={"bi bi-person-x-fill"}
+          noOfdata={lostItems}
+          iconColor="#9C549A"
+          bgColor="#E0C5DF"
+          colSize="col-xxl-6 col-md-6"
+        />
+
+        <ComputerMaintenanceCleaning />
         {/* <DashboardCard
           cardTitle="Item Defective"
           icons={"bi bi-trash"}
@@ -45,8 +67,6 @@ const DashboardPage = () => {
           bgColor="#f6f6fe"
           colSize="col-xxl-12 col-md-12"
         /> */}
-
-        <SupplierPriceUpdate />
       </div>
     </div>
   );

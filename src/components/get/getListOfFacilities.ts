@@ -20,10 +20,11 @@ export const getListOfFacilities = async ({
   search: string;
 }): Promise<myProps | undefined> => {
   try {
+
     const response = await instance.get(
       `/sqlApi/get-listoffacilities/?search=${search || ""}`
     );
-
+0
     // Assuming response.data contains an object with the facilities array
     const listOfFacilities: facilities[] = response.data.facilities || [];
 

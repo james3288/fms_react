@@ -1,56 +1,67 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useFacilityHistory from "../../../../customHooks/useFacilityHistory";
 import {
+  createRepairOrderModalProps,
   distinctFacilityHistory,
-  facilityHistory,
 } from "../../../../typeProps/typeProps";
-import FacilityHistoryLoading from "../../../../loadingEffect/facilityHistoryLoading";
+
+import FormatDateOnly from "../../../../../others/formatDateOnly";
+
+import CreateRepairOrderModal2 from "../../../../modals/CreateRepairOrderModal2";
+import { ItemStatusNew, ItemStatusOld } from "../../../../enum/itemStatusEnum";
 
 const recorrectStatusName = (status: string) => {
-  return status === "Turn-over"
-    ? "turnover"
-    : status === "Serve"
-    ? "served"
-    : status === "Vacant"
-    ? "vacant"
-    : status === "Disposed"
-    ? "disposed"
-    : status === "For Disposal"
-    ? "for-disposal"
+  return status === ItemStatusOld.Turnover
+    ? ItemStatusNew.Turnover
+    : status === ItemStatusOld.Served
+    ? ItemStatusNew.Served
+    : status === ItemStatusOld.Vacant
+    ? ItemStatusNew.Vacant
+    : status === ItemStatusOld.Disposed
+    ? ItemStatusNew.Disposed
+    : status === ItemStatusOld.ForDisposal
+    ? ItemStatusNew.ForDisposal
+    : status === ItemStatusOld.LowSpecs
+    ? ItemStatusNew.LowSpecs
+    : status === ItemStatusOld.LostItem
+    ? ItemStatusNew.LostItem
     : "";
 };
 
 const getStatusCircleColor = (status: string) => {
-  return status === "Turn-over"
+  return status === ItemStatusOld.Turnover
     ? "turnover-circle-color"
-    : status === "Serve"
+    : status === ItemStatusOld.Served
     ? "served-circle-color"
-    : status === "Vacant"
+    : status === ItemStatusOld.Vacant
     ? "vacant-circle-color"
-    : status === "Disposed"
+    : status === ItemStatusOld.Disposed
     ? "disposed-circle-color"
-    : status === "For Disposal"
+    : status === ItemStatusOld.ForDisposal
     ? "for-disposal-circle-color"
+    : status === ItemStatusOld.LowSpecs
+    ? "for-disposal-circle-color"
+    : status === ItemStatusOld.LostItem
+    ? "disposed-circle-color"
     : "";
 };
 
 const getStatusColor = (status: string) => {
-  return status === "Turn-over"
+  return status === ItemStatusOld.Turnover
     ? "turnover-bg-color"
-    : status === "Serve"
+    : status === ItemStatusOld.Served
     ? "served-bg-color"
-    : status === "Vacant"
+    : status === ItemStatusOld.Vacant
     ? "vacant-bg-color"
-    : status === "Disposed"
+    : status === ItemStatusOld.Disposed
     ? "disposed-bg-color"
-    : status === "For Disposal"
+    : status === ItemStatusOld.ForDisposal
     ? "for-disposal-bg-color"
+    : status === ItemStatusOld.LowSpecs
+    ? "for-disposal-bg-color"
+    : status === ItemStatusOld.LostItem
+    ? "disposed-bg-color"
     : "";
-};
-
-const handleCreateRepairOrder = (e: React.MouseEvent<HTMLAnchorElement>) => {
-  e.preventDefault();
-  console.log("hello");
 };
 
 const BorrowerHistoryItems2 = ({
@@ -64,11 +75,27 @@ const BorrowerHistoryItems2 = ({
     error,
   } = useFacilityHistory(item_code, item_name);
 
+  const [modalParam, setModalParam] = useState<createRepairOrderModalProps>();
+
+  // handle create repair order
+  const handleCreateRepairOrder = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    itemCode: string
+  ) => {
+    e.preventDefault();
+
+    const { cItemCode }: createRepairOrderModalProps = {
+      cItemCode: itemCode,
+    };
+
+    setModalParam({ cItemCode });
+  };
+
   if (status === "pending") return "";
 
   return (
     <>
-      <div className="card">
+      <div className="card" id={`id_${item_code}`}>
         <div className="filter">
           <a className="icon" href="#" data-bs-toggle="dropdown">
             <i className="bi bi-three-dots"></i>
@@ -105,7 +132,7 @@ const BorrowerHistoryItems2 = ({
               <div className="activity-item d-flex" key={item.custodian_id}>
                 <div className="activite-label">
                   <span className={`${getStatusColor(item.serve_status)}`}>
-                    08-14-23
+                    {FormatDateOnly(item.date_borrowed_turnover)}
                   </span>
                 </div>
                 <i
@@ -114,30 +141,60 @@ const BorrowerHistoryItems2 = ({
                   )}`}
                 ></i>
                 <div className="activity-content borrower-text">
-                  <span style={{ fontWeight: "600" }}>{item.brand}</span> -{" "}
-                  {item.custodian_name} <br /> {item.current_location}
+                  <span style={{ fontWeight: "600" }}>
+                    {" "}
+                    {item.item_name_desc_id} {item.brand}
+                  </span>{" "}
+                  - {item.custodian_name} <br /> {item.current_location}
                   <br />
                   <span>
                     MTO NO - <b>{item.mt_no} </b>
                   </span>
                   <br />
-                  <span>SERIAL NO - {item.serial_no}</span>
+                  <span>
+                    RS NO - <b>{item.rs_no} </b>
+                  </span>
+                  <br />
+                  <span>
+                    SERIAL NO - <b>{item.serial_no}</b>
+                  </span>
                   <br />
                   <a href="#" className="fw-bold text-dark">
                     <span className="ts-color">
-                      {recorrectStatusName(item.serve_status)}
+                      {`${recorrectStatusName(
+                        item.serve_status
+                      )} - ${item.status_item.toLocaleLowerCase()}`}
                     </span>
                   </a>
                   <br />
+                  {item.mt_no != null &&
+                    item.transfer_to != null &&
+                    item.serve_status !== ItemStatusOld.Disposed && (
+                      <code
+                        style={{
+                          fontSize: "14px",
+                          color: "green",
+                        }}
+                      >
+                        Note: This item has been{" "}
+                        <span className="">served</span> now to{" "}
+                        <b>{item.transfer_to}</b>
+                      </code>
+                    )}
                   <br />
-                  {recorrectStatusName(item.serve_status) != "turnover" && (
-                    <a
-                      href=""
-                      className="fw-bold text-dark"
-                      onClick={handleCreateRepairOrder}
+                  <br />
+                  {item.serve_status !== ItemStatusOld.Turnover && (
+                    <button
+                      type="button"
+                      className="cro-color"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalDialogScrollable"
+                      onClick={(e) => {
+                        handleCreateRepairOrder(e, item.item_code);
+                      }}
                     >
-                      <span className="cro-color">Create Repair Order</span>
-                    </a>
+                      Create Repair Order
+                    </button>
                   )}
                 </div>
               </div>
@@ -145,6 +202,9 @@ const BorrowerHistoryItems2 = ({
           </div>
         </div>
       </div>
+
+      {/* create repair order modal */}
+      <CreateRepairOrderModal2 {...modalParam} />
     </>
   );
 };

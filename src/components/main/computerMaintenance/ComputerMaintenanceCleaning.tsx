@@ -32,7 +32,7 @@ const ComputerMaintenanceCleaning = () => {
 
       <div className="card-body pb-0">
         <h5 className="card-title">
-          Computer Maintenance Cleaning<span>| Today</span>
+          Computer Maintenance Cleaning<span> | Month of August 2024</span>
         </h5>
 
         <div

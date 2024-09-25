@@ -22,14 +22,12 @@ const FacilitiesRightColumnBorrowerHistory = ({
     <>
       {distinctFacilityHistory?.distinctFH?.map(
         (item: distinctFacilityHistory) => (
-          <>
-            <BorrowerHistoryItems2
-              brand={item.brand}
-              item_name={item.item_name}
-              item_code={item_code}
-              key={item.item_code}
-            />
-          </>
+          <BorrowerHistoryItems2
+            brand={item.brand}
+            item_name={item.item_name}
+            item_code={item_code}
+            key={`_${item.item_code}`}
+          />
         )
       )}
     </>
